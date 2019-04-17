@@ -73,7 +73,7 @@ eureka:
     service-url:  
       defaultZone: http://localhost:7200/eureka/
   instance:
-    instance-id: baseframe-core-service-dev   #自定义服务器名称
+    instance-id: baseframe-core-service-test   #自定义服务器名称
     prefer-ip-address: true
 
 info:
