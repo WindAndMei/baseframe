@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 7206
+spring:
+  profiles: dev
+  application:
+    name: baseframe-config-client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7200/eureka/
+---
+server:
+  port: 7206
+spring:
+  profiles: test
+  application:
+    name: baseframe-config-client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7200/eureka/
