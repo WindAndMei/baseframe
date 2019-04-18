@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+server:
+  port: 7280
+
+#注册到eureka
+eureka:
+  client:
+    service-url:   #集群模式
+      defaultZone: http://localhost:7200/eureka
+  instance:
+    instance-id: baseframe-gate-service-dev  #自定义服务器名称
+    prefer-ip-address: true                  #访问路径显示ip地址
+
+spring:
+  application:
+    name: baseframe-gate-service               #very important
+
+zuul:
+#  prefix: /houlong
+  routes:
+    mydept.serviceId: microspringcloud-dept
+    mydept.path: /mydept/**
+  ignored-services: *    #如果要禁用所有 用*
+
+
+info:
+  app.name: houlong-microspringcloud
+  company.name: www.baidu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+server:
+  port: 7280
+
+#注册到eureka
+eureka:
+  client:
+    service-url:   #集群模式
+      defaultZone:  http://localhost:7200/eureka
+  instance:
+    instance-id: baseframe-gate-service-dev   #自定义服务器名称
+    prefer-ip-address: true                  #访问路径显示ip地址
+
+spring:
+  application:
+    name: baseframe-gate-service                #very important
+
+zuul:
+  prefix: /houlong
+  routes:
+    gate.serviceId: baseframe-gate-service
+    gate.path: /baseframe/**
+  ignored-services: *    #如果要禁用所有 用*
+
+
+info:
+  app.name: houlong-microspringcloud
+  company.name: www.baidu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
